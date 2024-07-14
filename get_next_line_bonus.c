@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kokamoto <kokamoto@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:00:13 by kokamoto          #+#    #+#             */
-/*   Updated: 2024/07/14 15:34:34 by kokamoto         ###   ########.fr       */
+/*   Updated: 2024/07/14 16:03:45 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -40,7 +40,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 char	*init_memory(char **memo, int fd)
 {
-	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX - 1)
+	if (fd > OPEN_MAX || fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX
+		- 1)
 	{
 		if (*memo != NULL)
 		{
@@ -112,9 +113,9 @@ char	*extract_line(char **memo)
 
 char	*get_next_line(int fd)
 {
-	static char	*memo;
+	static char	*memo[OPEN_MAX];
 
-	if (read_line(fd, &memo) == NULL)
+	if (read_line(fd, &memo[fd]) == NULL)
 		return (NULL);
-	return (extract_line(&memo));
+	return (extract_line(&memo[fd]));
 }
