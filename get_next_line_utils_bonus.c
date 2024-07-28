@@ -6,7 +6,7 @@
 /*   By: kokamoto <kokamoto@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:39:12 by kokamoto          #+#    #+#             */
-/*   Updated: 2024/07/14 15:46:17 by kokamoto         ###   ########.fr       */
+/*   Updated: 2024/07/28 19:04:09 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ char	*ft_strdup(const char *s1)
 
 char	*ft_strchr(const char *str, int c)
 {
+	if (!str)
+		return (NULL);
 	if ((char)c == '\0')
 	{
 		while (*str)

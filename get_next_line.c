@@ -6,7 +6,7 @@
 /*   By: kokamoto <kokamoto@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:00:13 by kokamoto          #+#    #+#             */
-/*   Updated: 2024/07/14 15:34:34 by kokamoto         ###   ########.fr       */
+/*   Updated: 2024/07/28 19:05:52 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 char	*init_memory(char **memo, int fd)
 {
+	char	*memory;
+
 	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX - 1)
 	{
 		if (*memo != NULL)
@@ -51,7 +53,10 @@ char	*init_memory(char **memo, int fd)
 	}
 	if (*memo == NULL)
 		*memo = ft_strdup("");
-	return ((char *)malloc(BUFFER_SIZE + 1));
+	memory = (char *)malloc(BUFFER_SIZE + 1);
+	if (!memory)
+		return (NULL);
+	return (memory);
 }
 
 char	*read_line(int fd, char **memo)
