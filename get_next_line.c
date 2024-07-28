@@ -6,7 +6,7 @@
 /*   By: kokamoto <kokamoto@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:00:13 by kokamoto          #+#    #+#             */
-/*   Updated: 2024/07/28 19:05:52 by kokamoto         ###   ########.fr       */
+/*   Updated: 2024/07/28 20:37:00 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 	char	*array;
 
-	i = 0;
-	j = 0;
-	array = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (array == NULL)
+	if (!s1 || !s2)
 		return (NULL);
+	array = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!array)
+		return (NULL);
+	i = 0;
 	while (s1[i])
 	{
 		array[i] = s1[i];
 		i++;
 	}
+	j = 0;
 	while (s2[j])
 	{
 		array[i] = s2[j];
@@ -38,20 +40,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (array);
 }
 
-char	*init_memory(char **memo, int fd)
+char	*init_memory(char **memo)
 {
 	char	*memory;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX - 1)
-	{
-		if (*memo != NULL)
-		{
-			free(*memo);
-			*memo = NULL;
-		}
-		return (NULL);
-	}
-	if (*memo == NULL)
+	if (!*memo)
 		*memo = ft_strdup("");
 	memory = (char *)malloc(BUFFER_SIZE + 1);
 	if (!memory)
@@ -65,8 +58,8 @@ char	*read_line(int fd, char **memo)
 	ssize_t	ret;
 	char	*temp;
 
-	buf = init_memory(memo, fd);
-	if (buf == NULL)
+	buf = init_memory(memo);
+	if (!buf)
 		return (NULL);
 	ret = 1;
 	while (!ft_strchr(*memo, '\n') && ret > 0)
@@ -93,7 +86,7 @@ char	*extract_line(char **memo)
 	char	*line;
 	char	*temp;
 
-	if (ft_strchr(*memo, '\n') == NULL)
+	if (!ft_strchr(*memo, '\n'))
 	{
 		if (**memo == '\0')
 		{

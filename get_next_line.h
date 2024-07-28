@@ -6,7 +6,7 @@
 /*   By: kokamoto <kokamoto@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:00:17 by kokamoto          #+#    #+#             */
-/*   Updated: 2024/07/14 15:33:55 by kokamoto         ###   ########.fr       */
+/*   Updated: 2024/07/28 20:18:52 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # include <limits.h>
-# include <stdio.h>
+# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
 
