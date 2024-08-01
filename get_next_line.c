@@ -6,7 +6,7 @@
 /*   By: kokamoto <kokamoto@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:00:13 by kokamoto          #+#    #+#             */
-/*   Updated: 2024/07/28 20:37:00 by kokamoto         ###   ########.fr       */
+/*   Updated: 2024/08/01 20:11:12 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ char	*get_next_line(int fd)
 {
 	static char	*memo;
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	if (read_line(fd, &memo) == NULL)
 		return (NULL);
 	return (extract_line(&memo));

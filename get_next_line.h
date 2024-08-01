@@ -6,7 +6,7 @@
 /*   By: kokamoto <kokamoto@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:00:17 by kokamoto          #+#    #+#             */
-/*   Updated: 2024/07/28 20:18:52 by kokamoto         ###   ########.fr       */
+/*   Updated: 2024/08/01 20:11:49 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ size_t	ft_strlen(const char *str);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX _SC_OPEN_MAX
 # endif
 
 #endif
