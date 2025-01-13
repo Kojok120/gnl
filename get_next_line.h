@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kokamoto <kokamoto@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:00:17 by kokamoto          #+#    #+#             */
-/*   Updated: 2024/08/01 20:11:49 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:13:53 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 char	*get_next_line(int fd);
 char	*ft_strdup(const char *s1);
@@ -29,7 +30,7 @@ size_t	ft_strlen(const char *str);
 # endif
 
 # ifndef OPEN_MAX
-#  define OPEN_MAX _SC_OPEN_MAX
+#  define OPEN_MAX FOPEN_MAX
 # endif
 
 #endif
